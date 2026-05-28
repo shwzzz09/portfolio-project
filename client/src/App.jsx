@@ -523,11 +523,7 @@ function Contact() {
                 ✅ Message sent! I'll reply within 24 hours.
               </div>
             )}
-            {status === "error" && (
-              <div className="form-error-msg">
-                ❌ Something went wrong. Please try again.
-              </div>
-            )}
+        
           </form>
         </div>
       </div>
