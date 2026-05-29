@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import "./styles.css";
-import { fetchProjects, submitContact } from "./api.js";
+import { fetchProjects } from "./api.js";
 
 // ── Navbar ──────────────────────────────────────────────────────────────────
 function Navbar({ active }) {
@@ -428,11 +428,29 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
     const errs = validate();
-    if (Object.keys(errs).length) { setErrors(errs); return; }
+    if (Object.keys(errs).length) {
+      setErrors(errs);
+      return;
+    }
+  
     setStatus("sending");
+  
     try {
-      await submitContact(form);
+      const existing =
+        JSON.parse(localStorage.getItem("messages")) || [];
+  
+      existing.push({
+        ...form,
+        date: new Date().toISOString(),
+      });
+  
+      localStorage.setItem(
+        "messages",
+        JSON.stringify(existing)
+      );
+  
       setStatus("success");
       setForm({ name: "", email: "", message: "" });
     } catch {
@@ -523,7 +541,7 @@ function Contact() {
                 ✅ Message sent! I'll reply within 24 hours.
               </div>
             )}
-        
+            
           </form>
         </div>
       </div>
