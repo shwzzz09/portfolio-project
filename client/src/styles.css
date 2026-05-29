@@ -1038,8 +1038,8 @@ a.contact-info-card:hover {
   }
   .btn { padding: 0.75rem 1.5rem; font-size: 0.875rem; }
 
-  /* Code card: scale down, no floating badges */
-  .hero__visual { order: -1; width: 100%; display: flex; justify-content: center; }
+  /* Code card: sits BELOW the text on mobile (natural order, no order:-1) */
+  .hero__visual { order: 1; width: 100%; display: flex; justify-content: center; }
   .code-card {
     width: min(320px, calc(100vw - 2.5rem));
     font-size: 0.85rem;
