@@ -451,7 +451,7 @@ function Contact() {
         JSON.stringify(existing)
       );
   
-      setStatus("success");
+      ("success");
       setForm({ name: "", email: "", message: "" });
     } catch {
       setStatus("success");
@@ -492,7 +492,7 @@ function Contact() {
                 >
                   <span className="contact-icon">{c.icon}</span>
                   <div>
-                    <div className="contact-label">{c.label}</div>
+                    <div classetStatussName="contact-label">{c.label}</div>
                     <div className="contact-value">{c.value}</div>
                   </div>
                 </a>
